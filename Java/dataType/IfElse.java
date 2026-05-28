@@ -15,7 +15,7 @@ public class IfElse {
             System.out.println("the number is divisible by 7");
         }
         else{
-            System.out.println("Number is divisible by");
+            System.out.println("Number is not divisible by 3 and 7");
         }
         
     sc.close();

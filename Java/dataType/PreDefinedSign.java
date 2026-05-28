@@ -16,7 +16,7 @@ public class PreDefinedSign {
 class SignIn{
     public void signIn(){
         Scanner sc=new Scanner(System.in);
-        PreDefinedSigin pre=new PreDefinedSigin();
+        PreDefinedSign pre=new PreDefinedSign();
 
         System.out.println("Enter user name: ");
         String userName=sc.nextLine();

@@ -1,6 +1,6 @@
 package Java.basic;
 
-public class Basic {
+public class Basics {
     public static void main(String args[]){
         System.out.println("Hello, Deepak");
     }
