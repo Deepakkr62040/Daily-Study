@@ -20,7 +20,10 @@ public class Calculator extends JFrame {
             btnAdd, btnSub, btnMul, btnDiv,
             btnEqual, btnDot, btnClear;
     
-    
+    double num1, num2, result;
+    String operator;
+
+    boolean isOperatorClicked = false;
 
     Calculator(){
         setTitle("Calculator");
@@ -47,7 +50,7 @@ public class Calculator extends JFrame {
 
         JPanel buttonPanel = new JPanel();
 
-        buttonPanel.setLayout(new GridLayout(5, 4, 10, 10));
+        buttonPanel.setLayout(new GridLayout(4, 4, 10, 10));
         buttonPanel.setBackground(new Color(25, 25, 25));
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
@@ -69,9 +72,6 @@ public class Calculator extends JFrame {
         btn0 = createButton("0");
         btnDot = createButton(".");
         btnDiv = createOperatorButton("/");
-
-        btnClear = createOperatorButton("C");
-
         btnEqual = createOperatorButton("=");
 
         buttonPanel.add(btn1);
@@ -92,11 +92,78 @@ public class Calculator extends JFrame {
         buttonPanel.add(btn0);
         buttonPanel.add(btnDot);
         buttonPanel.add(btnDiv);
-        buttonPanel.add(btnClear);
-
         buttonPanel.add(btnEqual);
 
         add(buttonPanel, BorderLayout.CENTER);
+
+
+        btn0.addActionListener(e -> display.setText(display.getText() + "0"));
+        btn1.addActionListener(e -> display.setText(display.getText() + "1"));
+        btn2.addActionListener(e -> display.setText(display.getText() + "2"));
+        btn3.addActionListener(e -> display.setText(display.getText() + "3"));
+        btn4.addActionListener(e -> display.setText(display.getText() +  "4"));
+        btn5.addActionListener(e -> display.setText(display.getText() + "5"));
+        btn6.addActionListener(e -> display.setText(display.getText() + "6"));
+        btn7.addActionListener(e -> display.setText(display.getText() + "7"));
+        btn8.addActionListener(e -> display.setText(display.getText() + "8"));
+        btn9.addActionListener(e -> display.setText(display.getText() + "9"));
+
+        btnDot.addActionListener(e -> display.setText(display.getText() + "."));
+
+
+        btnAdd.addActionListener(e -> {
+            num1 = Double.parseDouble(display.getText());
+            operator = "+";
+            display.setText("");
+        });
+
+        btnSub.addActionListener(e -> {
+            num1 = Double.parseDouble(display.getText());
+            operator = "-";
+            display.setText("");
+        });
+
+        btnMul.addActionListener(e -> {
+            num1 = Double.parseDouble(display.getText());
+            operator = "*";
+            display.setText("");
+        });
+
+        btnDiv.addActionListener(e -> {
+            num1 = Double.parseDouble(display.getText());
+            operator = "/";
+            display.setText("");
+        });
+
+
+
+
+        btnEqual.addActionListener(e -> {
+
+            num2 = Double.parseDouble(display.getText());
+
+            switch(operator) {
+
+                case "+":
+                    result = num1 + num2;
+                    break;
+
+                case "-":
+                    result = num1 - num2;
+                    break;
+
+                case "*":
+                    result = num1 * num2;
+                    break;
+
+                case "/":
+                    result = num1 / num2;
+                    break;
+            }
+
+            display.setText(String.valueOf(result));
+        });
+
 
         setVisible(true);
     }
