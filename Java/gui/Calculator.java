@@ -36,9 +36,9 @@ public class Calculator extends JFrame {
         getContentPane().setBackground(new Color(25, 25, 25));
         
         display = new JTextField();
-        display.setFont(new Font("Arial", Font.BOLD, 32));
+        display.setFont(new Font("Segoe UI", Font.BOLD, 32));
 
-        display.setBackground(new Color(40, 40, 40));
+        display.setBackground(new Color(15, 15, 15));
         display.setForeground(Color.white);
         display.setEditable(false);
         display.setHorizontalAlignment(JTextField.RIGHT);
@@ -74,6 +74,8 @@ public class Calculator extends JFrame {
         btnDiv = createOperatorButton("/");
         btnEqual = createOperatorButton("=");
 
+        btnClear = createClearButton("Clear");
+
         buttonPanel.add(btn1);
         buttonPanel.add(btn2);
         buttonPanel.add(btn3);
@@ -95,6 +97,14 @@ public class Calculator extends JFrame {
         buttonPanel.add(btnEqual);
 
         add(buttonPanel, BorderLayout.CENTER);
+
+        JPanel clearPanel = new JPanel(new BorderLayout());
+        clearPanel.setBackground(new Color(25, 25, 25));
+        clearPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
+
+        clearPanel.add(btnClear, BorderLayout.CENTER);
+
+        add(clearPanel, BorderLayout.SOUTH);
 
 
         btn0.addActionListener(e -> display.setText(display.getText() + "0"));
@@ -164,6 +174,14 @@ public class Calculator extends JFrame {
             display.setText(String.valueOf(result));
         });
 
+        btnClear.addActionListener(e -> {
+            display.setText("");
+            num1 = 0;
+            num2 = 0;
+            result = 0;
+            operator = "";
+        });
+
 
         setVisible(true);
     }
@@ -192,6 +210,20 @@ public class Calculator extends JFrame {
         btn.setFocusPainted(false);
 
         btn.setForeground(Color.white);
+
+        return btn;
+    }
+
+    JButton createClearButton(String text){
+        JButton btn = new JButton(text);
+
+        btn.setFont(new Font("Arial", Font.BOLD, 24));
+
+        btn.setBackground(new Color(25, 140, 0));
+
+        btn.setFocusPainted(false);
+
+        btn.setForeground(Color.red);
 
         return btn;
     }
