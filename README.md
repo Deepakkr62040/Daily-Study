@@ -7,3 +7,5 @@
 # DSA
 
 ---------------
+
+# Small projects
