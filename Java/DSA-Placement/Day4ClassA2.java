@@ -24,7 +24,9 @@ public class Day4ClassA2 {
 					duplicate= arr[i];
 				}
 			}
-			arr[i] = max;
+			if(foundDup == true){
+				break;
+			}
 		}
 		if(foundDup){
 			System.out.println("\nDuplicate value is : "+duplicate);
